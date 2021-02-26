@@ -15,7 +15,6 @@ namespace Banking
 
         public Account(string accountName, double balance, Address address)
         {
-            accountNumber += 1;
             this.accountName = accountName;
             this.balance = balance;
             this.address = address;
@@ -43,6 +42,10 @@ namespace Banking
             set { this.address = value; }
         }
 
+        public void Diposit(double amount) {
+            double newBalance = balance + amount;
+            balance = newBalance;
+        }
         public void ShowAccountInformation()
         {
             Console.WriteLine("Account No:{0}\nAccount Name:{1}\nBalance:{2}",

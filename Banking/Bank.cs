@@ -25,18 +25,6 @@ namespace Banking
             set { this.myBank = value; }
             get { return this.myBank; }
         }
-
-        public void PrintAccountDetails()
-        {
-            for(int i=0;i< myBank.Length;i++)
-            {
-                if (myBank[i] == null)
-                {
-                    continue;
-                }
-                myBank[i].ShowAccountInformation();
-            }
-        }
         public void AddAccount(Account account)
         {
             for (int i = 0; i < myBank.Length; i++)
@@ -44,6 +32,7 @@ namespace Banking
                 if(myBank[i]==null)
                 {
                     myBank[i] = account;
+                    myBank[i].AccountNumber = i + 1;
                     break;
                 }
             }
@@ -72,6 +61,21 @@ namespace Banking
                 }
             }
         }
-        
+
+        public void Transaction(int transactionType, double amount, params Account[] account ) {
+            if (transactionType == 1) { myBank[2].Diposit(amount); }
+        }
+
+        public void PrintAccountDetails()
+        {
+            for (int i = 0; i < myBank.Length; i++)
+            {
+                if (myBank[i] == null)
+                {
+                    continue;
+                }
+                myBank[i].ShowAccountInformation();
+            }
+        }
     }
 }
