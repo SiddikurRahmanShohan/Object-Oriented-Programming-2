@@ -66,9 +66,8 @@ namespace Banking
         }
         public void ShowAccountInformation()
         {
-            Console.WriteLine("\nAccount No:{0}\nAccount Name:{1}\nBalance:{2}",
-                this.accountNumber, this.accountName, this.balance);
-            this.address.GetAddress();
+            Console.WriteLine("\nAccount No:{0}\nAccount Name:{1}\nBalance:{2}\nAddress:{3}",
+                this.accountNumber, this.accountName, this.balance, this.address.GetAddress());
         }
     }
 }

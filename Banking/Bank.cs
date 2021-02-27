@@ -53,7 +53,7 @@ namespace Banking
                         if (j < myBank.Length - 1) { myBank[j] = null; myBank[j] = myBank[j + 1]; }
                         else { myBank[j] = null; }
                     }
-                    Console.WriteLine("Account Deleted");
+                    Console.WriteLine("\nAccount Deleted");
                     break;
                 }
             }

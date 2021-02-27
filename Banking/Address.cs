@@ -42,8 +42,8 @@ namespace Banking
 
         public string GetAddress()
         {
-            string address = "Address: House No." + this.houseNo + "Road: " + this.roadNo
-               + "City: " + this.city + "Country: " + this.country;
+            string address = "Address: House No." + this.houseNo + " Road: " + this.roadNo
+               + " City: " + this.city + " Country: " + this.country;
             return address;
         }
     }
