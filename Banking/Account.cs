@@ -43,12 +43,30 @@ namespace Banking
         }
 
         public void Diposit(double amount) {
-            double newBalance = balance + amount;
-            balance = newBalance;
+            double newBalance = this.balance + amount;
+            this.balance = newBalance;
+        }
+
+        public void Withdraw(double amount)
+        {
+            if(amount > 0.0)
+            {
+                double newBalance = this.balance - amount;
+                this.balance = newBalance;
+            }
+        }
+
+        public void Transfer(Account reciver, double amount)
+        {
+            if (this.balance > amount)
+            {
+                reciver.Diposit(amount);
+                this.Withdraw(amount);
+            }
         }
         public void ShowAccountInformation()
         {
-            Console.WriteLine("Account No:{0}\nAccount Name:{1}\nBalance:{2}",
+            Console.WriteLine("\nAccount No:{0}\nAccount Name:{1}\nBalance:{2}",
                 this.accountNumber, this.accountName, this.balance);
             this.address.GetAddress();
         }

@@ -63,7 +63,12 @@ namespace Banking
         }
 
         public void Transaction(int transactionType, double amount, params Account[] account ) {
-            if (transactionType == 1) { myBank[2].Diposit(amount); }
+            if (transactionType == 1) 
+                { myBank[2].Diposit(amount); }
+            else if (transactionType == 2) 
+                { myBank[1].Withdraw(amount); }
+            else if (transactionType == 3)
+                { myBank[4].Transfer(account[0], amount); }
         }
 
         public void PrintAccountDetails()
