@@ -38,7 +38,8 @@ namespace Banking
             }
         }
         
-       public void DeleteAccount(int accountNo) { 
+       public void DeleteAccount(int accountNo) {
+            int flag = 1;
             for (int i = 0; i < myBank.Length; i++)
             {
                 if (myBank[i] == null)
@@ -47,19 +48,16 @@ namespace Banking
                 }
                 else if (myBank[i].AccountNumber == accountNo)
                 {
-                    myBank[i] = null;
-                    for (int j = i; j < (myBank.Length - 1); j++) {
-                        myBank[j] = myBank[j + 1];
+                    flag = 0;
+                    for (int j = i; j < myBank.Length; j++) {
+                        if (j < myBank.Length - 1) { myBank[j] = null; myBank[j] = myBank[j + 1]; }
+                        else { myBank[j] = null; }
                     }
                     Console.WriteLine("Account Deleted");
                     break;
                 }
-                else
-                {
-                    Console.WriteLine("Account Deleted");
-
-                }
             }
+            if(flag == 1) { Console.WriteLine("Account Not Found"); }
         }
 
         public void Transaction(int transactionType, double amount, params Account[] account ) {

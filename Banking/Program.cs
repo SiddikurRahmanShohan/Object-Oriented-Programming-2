@@ -31,6 +31,10 @@ namespace Banking
             account2.ShowAccountInformation();
             bank.Transaction(3, 1000, account3);
             Console.WriteLine("\nAfter Transfering 1000 from Account no. 5 to Account no. 3");
+            account3.ShowAccountInformation();
+            account5.ShowAccountInformation();
+            bank.DeleteAccount(3);
+            Console.WriteLine("\nAfter Deleting Account no. 3");
             bank.PrintAccountDetails();
         }
     }
