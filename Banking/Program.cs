@@ -40,11 +40,11 @@ namespace Banking
                             string country = (Console.ReadLine());
                             Console.Write("\nInitial Diposit Amount: ");
                             double balance = Convert.ToDouble(Console.ReadLine());
-                            Account account = new Account(name, dateOfBirth, balance,
+                            Account account = new SavingsAccount(name, dateOfBirth, balance,
                                 new Address(houseNo, roadNo, city, country));
                             bank.AddAccount(account);
                             Console.WriteLine("\n----------Account Added----------");
-                            account.ShowAccountInformation();
+                            bank.PrintAccountDetails();
                             return true;
                         case "checking":
                             Console.WriteLine("----------Input Personal Details for Checking Account-----------");
@@ -62,7 +62,7 @@ namespace Banking
                             country = (Console.ReadLine());
                             Console.Write("\nInitial Diposit Amount: ");
                             balance = Convert.ToDouble(Console.ReadLine());
-                            account = new Account(name, dateOfBirth, balance,
+                            account = new CheckingAccount(name, dateOfBirth, balance,
                                 new Address(houseNo, roadNo, city, country));
                             bank.AddAccount(account);
                             Console.WriteLine("\n----------Account Added----------");
@@ -134,19 +134,7 @@ namespace Banking
             {
                 showHomeMenu = HomeMenu();
             }
-           /* bank.Transaction(1, 500.0);
-            Console.WriteLine("\nAfter Depositing 500 in Account no. 3");
-            account3.ShowAccountInformation();
-            bank.Transaction(2, 200.0);
-            Console.WriteLine("\nAfter Withdrawing 200 from Account no. 2");
-            account2.ShowAccountInformation();
-            bank.Transaction(3, 1000, account3);
-            Console.WriteLine("\nAfter Transfering 1000 from Account no. 5 to Account no. 3");
-            account3.ShowAccountInformation();
-            account5.ShowAccountInformation();
-            bank.DeleteAccount(3);
-            Console.WriteLine("\nAfter Deleting Account no. 3");
-            bank.PrintAccountDetails();*/
+            
         }
     }
  }

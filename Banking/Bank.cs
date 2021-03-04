@@ -31,6 +31,7 @@ namespace Banking
             {
                 if(myBank[i]==null)
                 {
+                    Console.Write("\nAdding..... ");
                     myBank[i] = account;
                     myBank[i].AccountNumber = i + 1;
                     break;
@@ -75,9 +76,12 @@ namespace Banking
             {
                 if (myBank[i] == null)
                 {
+                    Console.WriteLine("Null boy");
                     continue;
                 }
-                myBank[i].ShowAccountInformation();
+                else {
+                    myBank[i].ShowAccountInformation();
+                }
             }
         }
     }
