@@ -13,7 +13,6 @@ namespace Banking
         private string dateOfBirth;
         private double balance;
         private Address address;
-
         public Account(string accountName, string dateOfBirth, double balance, Address address)
         {
             this.accountName = accountName;

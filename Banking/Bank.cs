@@ -8,8 +8,8 @@ namespace Banking
 {
     class Bank
     {
-        public string bankName;
-        public Account[] myBank;
+        private string bankName;
+        private Account[] myBank;
         public Bank(string name, int size)
         {
             this.bankName = name;
@@ -60,13 +60,13 @@ namespace Banking
             if(flag == 1) { Console.WriteLine("Account Not Found"); }
         }
 
-        public void Transaction(int transactionType, double amount, params Account[] account ) {
+        public void Transaction(int transactionType, double amount, params int[] accountNumber ) {
             if (transactionType == 1) 
-                { myBank[2].Diposit(amount); }
+                { myBank[(accountNumber[0] - 1)].Diposit(amount); }
             else if (transactionType == 2) 
-                { myBank[1].Withdraw(amount); }
+                { myBank[(accountNumber[0] - 1)].Withdraw(amount); }
             else if (transactionType == 3)
-                { myBank[4].Transfer(account[0], amount); }
+                { myBank[(accountNumber[0] - 1)].Transfer(myBank[(accountNumber[0] - 1)], amount); }
         }
 
         public void PrintAccountDetails()
