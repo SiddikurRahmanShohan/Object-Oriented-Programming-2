@@ -76,7 +76,7 @@ namespace Banking
             {
                 if (myBank[i] == null)
                 {
-                    Console.WriteLine("Null boy");
+                    Console.WriteLine("Null!");
                     continue;
                 }
                 else {

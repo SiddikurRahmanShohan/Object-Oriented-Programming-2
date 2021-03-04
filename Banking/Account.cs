@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace Banking
 {
-    abstract class Account
+    class Account
     {
         protected int accountNumber = 0;
         protected string accountName;
         protected string dateOfBirth;
         protected double balance;
         protected Address address;
+        //private static int count = 1000;
 
         public Account()
         {
-            
         }
         public Account(string accountName, string dateOfBirth, double balance, Address address)
         {
@@ -26,39 +26,39 @@ namespace Banking
             this.address = address;
         }
 
-       public int AccountNumber
+        virtual public int AccountNumber
         {
             get { return this.accountNumber; }
             set { this.accountNumber = value; }
         }
-        public string AccountName
+        virtual public string AccountName
         {
             get { return this.accountName; }
             set { this.accountName = value; }
         }
 
-        public string DateOfBirth
+        virtual public string DateOfBirth
         {
             get { return this.dateOfBirth; }
             set { this.dateOfBirth = value; }
         }
-        public double Balance
+        virtual public double Balance
         {
             get { return this.balance; }
             set { this.balance = value; }
         }
 
-        public Address Address
+        virtual public Address Address
         {
             get { return this.address; }
             set { this.address = value; }
         }
 
-        abstract public void Diposit(double amount);
+        virtual public void Diposit(double amount) { }
 
-        abstract public void Withdraw(double amount);
+        virtual public void Withdraw(double amount) { }
 
-        abstract public void Transfer(Account reciver, double amount);
-        abstract public void ShowAccountInformation();
+        virtual public void Transfer(Account reciver, double amount) { }
+        virtual public void ShowAccountInformation() { }
     }
 }

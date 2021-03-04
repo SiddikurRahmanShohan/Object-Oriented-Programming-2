@@ -10,7 +10,34 @@ namespace Banking
     {
         public SavingsAccount(string accountName, string dateOfBirth, double balance, Address address):
             base(accountName, dateOfBirth, balance, address)
-        {     
+        {
+        }
+       override public int AccountNumber
+        {
+            get { return this.accountNumber; }
+            set { this.accountNumber = value; }
+        }
+        override public string AccountName
+        {
+            get { return this.accountName; }
+            set { this.accountName = value; }
+        }
+
+        override public string DateOfBirth
+        {
+            get { return this.dateOfBirth; }
+            set { this.dateOfBirth = value; }
+        }
+        override public double Balance
+        {
+            get { return this.balance; }
+            set { this.balance = value; }
+        }
+
+        override public Address Address
+        {
+            get { return this.address; }
+            set { this.address = value; }
         }
 
         override public void Diposit(double amount)
