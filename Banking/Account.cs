@@ -10,12 +10,14 @@ namespace Banking
     {
         private int accountNumber = 0;
         private string accountName;
+        private string dateOfBirth;
         private double balance;
         private Address address;
 
-        public Account(string accountName, double balance, Address address)
+        public Account(string accountName, string dateOfBirth, double balance, Address address)
         {
             this.accountName = accountName;
+            this.dateOfBirth = dateOfBirth;
             this.balance = balance;
             this.address = address;
         }
@@ -29,6 +31,12 @@ namespace Banking
         {
             get { return this.accountName; }
             set { this.accountName = value; }
+        }
+
+        public string DateOfBirth
+        {
+            get { return this.dateOfBirth; }
+            set { this.dateOfBirth = value; }
         }
         public double Balance
         {
@@ -49,7 +57,7 @@ namespace Banking
 
         public void Withdraw(double amount)
         {
-            if(amount > 0.0)
+            if(amount <= this.balance)
             {
                 double newBalance = this.balance - amount;
                 this.balance = newBalance;
@@ -66,8 +74,8 @@ namespace Banking
         }
         public void ShowAccountInformation()
         {
-            Console.WriteLine("\nAccount No:{0}\nAccount Name:{1}\nBalance:{2}\nAddress:{3}",
-                this.accountNumber, this.accountName, this.balance, this.address.GetAddress());
+            Console.WriteLine("\nAccount No:{0}\nAccount Name:{1}\nDate Of Birth:{2}\nBalance:{3}\nAddress:{4}",
+                this.accountNumber, this.accountName, this.dateOfBirth, this.balance, this.address.GetAddress());
         }
     }
 }

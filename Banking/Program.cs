@@ -8,22 +8,77 @@ namespace Banking
 {
     class Program
     {
+        public static bool OpenMenu() {
+            Console.WriteLine("Type 'savings' to Open a Savings Account");
+            Console.WriteLine("Type 'checking' to Open a Checking Account");
+            Console.WriteLine("Type 'quit' to Exit");
+            Console.Write("\r\nSelect an option: ");
+            Bank bank = new Bank("Developers Bank", 5);
+            switch (Console.ReadLine())
+            {
+                case "savings":
+                    Console.WriteLine("----------Input Personal Details for Savings Account-----------");
+                    Console.Write("Name of Account Holder: ");
+                    string name = (Console.ReadLine());
+                    Console.Write("\nDate of Birth: ");
+                    string dateOfBirth = (Console.ReadLine());
+                    Console.Write("\nHouse Number: ");
+                    string houseNo = (Console.ReadLine());
+                    Console.Write("\nRoad Number: ");
+                    string roadNo = (Console.ReadLine());
+                    Console.Write("\nCity: ");
+                    string city = (Console.ReadLine());
+                    Console.Write("\nCounty: ");
+                    string country = (Console.ReadLine());
+                    Console.Write("\nInitial Diposit Amount: ");
+                    double balance = Convert.ToDouble(Console.ReadLine());
+                    Account account = new Account(name, dateOfBirth, balance,
+                        new Address(houseNo, roadNo, city, country));
+                    bank.AddAccount(account);
+                    Console.WriteLine("\n----------Account Added----------");
+                    account.ShowAccountInformation();
+                    return true;
+                case "checking":
+                    return true;
+                case "quit":
+                    return false;
+                default:
+                    return true;
+            }
+        }
+        public static bool HomeMenu() {
+            //Console.Clear();
+            Console.WriteLine("Type 'open' to Open an Account");
+            Console.WriteLine("Type 'account' for Transaction");
+            Console.WriteLine("Type 'quit' to Exit");
+            Console.Write("\r\nSelect an option: ");
+            switch (Console.ReadLine()) 
+                {
+                case "open":
+                    bool showOpenMenu = true;
+                    while (showOpenMenu) {
+                        showOpenMenu = OpenMenu();
+                    }
+                return true;
+                case "account":
+                    
+                return true;
+                case "quit":
+
+                    return false;
+                default:
+                    return true;
+            }
+        }
         static void Main(string[] args)
         {
             Console.WriteLine("*************Welcome to Banking Colsole Application*************");
-            Bank bank = new Bank("New Bank", 5);
-            Account account1 = new Account("Any1", 5000, new Address("24", "31", "Vegas", "USA"));
-            Account account2 = new Account("Any2", 3000, new Address("214", "21", "LA", "USA"));
-            Account account3 = new Account("Any3", 2000, new Address("4", "2", "Dhaka", "Bangladesh"));
-            Account account4 = new Account("Any4", 2500, new Address("12", "66", "Chittagong", "Bangladesh"));
-            Account account5 = new Account("Any5", 8000, new Address("2", "85", "Waterloo", "Canada"));
-            bank.AddAccount(account1);
-            bank.AddAccount(account2);
-            bank.AddAccount(account3);
-            bank.AddAccount(account4);
-            bank.AddAccount(account5);
-            bank.PrintAccountDetails();
-            bank.Transaction(1, 500.0);
+            bool showHomeMenu = true;
+            while (showHomeMenu)
+            {
+                showHomeMenu = HomeMenu();
+            }
+           /* bank.Transaction(1, 500.0);
             Console.WriteLine("\nAfter Depositing 500 in Account no. 3");
             account3.ShowAccountInformation();
             bank.Transaction(2, 200.0);
@@ -35,7 +90,7 @@ namespace Banking
             account5.ShowAccountInformation();
             bank.DeleteAccount(3);
             Console.WriteLine("\nAfter Deleting Account no. 3");
-            bank.PrintAccountDetails();
+            bank.PrintAccountDetails();*/
         }
     }
  }

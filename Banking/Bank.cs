@@ -8,8 +8,8 @@ namespace Banking
 {
     class Bank
     {
-        private string bankName;
-        private Account[] myBank;
+        public string bankName;
+        public Account[] myBank;
         public Bank(string name, int size)
         {
             this.bankName = name;
