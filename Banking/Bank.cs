@@ -67,7 +67,7 @@ namespace Banking
             else if (transactionType == 2) 
                 { myBank[(accountNumber[0] - 1)].Withdraw(amount); }
             else if (transactionType == 3)
-                { myBank[(accountNumber[0] - 1)].Transfer(myBank[(accountNumber[0] - 1)], amount); }
+                { myBank[(accountNumber[0] - 1)].Transfer(myBank[(accountNumber[1] - 1)], amount); }
         }
 
         public void PrintAccountDetails()
@@ -76,7 +76,6 @@ namespace Banking
             {
                 if (myBank[i] == null)
                 {
-                    Console.WriteLine("Null!");
                     continue;
                 }
                 else {

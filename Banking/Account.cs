@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Banking
 {
-    class Account
+    abstract class Account
     {
         protected int accountNumber = 0;
         protected string accountName;
@@ -26,39 +26,38 @@ namespace Banking
             this.address = address;
         }
 
-        virtual public int AccountNumber
+        public int AccountNumber
         {
             get { return this.accountNumber; }
             set { this.accountNumber = value; }
         }
-        virtual public string AccountName
+        public string AccountName
         {
             get { return this.accountName; }
             set { this.accountName = value; }
         }
 
-        virtual public string DateOfBirth
+        public string DateOfBirth
         {
             get { return this.dateOfBirth; }
             set { this.dateOfBirth = value; }
         }
-        virtual public double Balance
+        public double Balance
         {
             get { return this.balance; }
             set { this.balance = value; }
         }
-
-        virtual public Address Address
+        public Address Address
         {
             get { return this.address; }
             set { this.address = value; }
         }
 
-        virtual public void Diposit(double amount) { }
+        abstract public void Diposit(double amount);
 
-        virtual public void Withdraw(double amount) { }
+        abstract public void Withdraw(double amount);
 
-        virtual public void Transfer(Account reciver, double amount) { }
-        virtual public void ShowAccountInformation() { }
+        abstract public void Transfer(Account reciver, double amount);
+        abstract public void ShowAccountInformation();
     }
 }

@@ -8,12 +8,17 @@ namespace Banking
 {
     class CheckingAccount: Account
     {
+        private int transaction = 0;
         public CheckingAccount(string accountName, string dateOfBirth, double balance, Address address):
             base(accountName, dateOfBirth, balance, address)
         {     
         }
-
-        override public int AccountNumber
+        public int Transaction
+        {
+            get { return this.transaction; }
+            set { this.transaction = value; }
+        }
+        /*override public int AccountNumber
         {
             get { return this.accountNumber; }
             set { this.accountNumber = value; }
@@ -39,12 +44,16 @@ namespace Banking
         {
             get { return this.address; }
             set { this.address = value; }
-        }
+        }*/
+
         override public void Diposit(double amount)
         {
             double newBalance = this.balance + amount;
             this.balance = newBalance;
+            int newTransaction = this.transaction + 1;
+            this.transaction = newTransaction;
             Console.WriteLine("\n-----------Diposit Successful-----------");
+            Console.WriteLine("\nTransaction no.: " + this.transaction);
             Console.WriteLine("\nNew Balance: " + this.balance);
         }
 
@@ -54,7 +63,10 @@ namespace Banking
             {
                 double newBalance = this.balance - amount;
                 this.balance = newBalance;
+                int newTransaction = this.transaction + 1;
+                this.transaction = newTransaction;
                 Console.WriteLine("\n-----------Withdrawal Successful-----------");
+                Console.WriteLine("\nTransaction no.: " + this.transaction);
                 Console.WriteLine("\nNew Balance: " + this.balance);
             }
             else if (this.balance == 0.0) {
@@ -74,6 +86,7 @@ namespace Banking
                 reciver.Diposit(amount);
                 this.Withdraw(amount);
                 Console.WriteLine("\n-----------Transfer Successful-----------");
+                Console.WriteLine("\nTransaction no.: " + this.transaction);
                 Console.WriteLine("\nNew Balance: " + this.balance);
             }
             else if (this.balance == 0.0)
@@ -88,8 +101,8 @@ namespace Banking
         }
         override public void ShowAccountInformation()
         {
-            Console.WriteLine("\nAccount No:{0}\nAccount Name:{1}\nDate Of Birth:{2}\nBalance:{3}\nAddress:{4}",
-                this.accountNumber, this.accountName, this.dateOfBirth, this.balance, this.address.GetAddress());
+            Console.WriteLine("\nAccount No:{0}\nAccount Name:{1}\nDate Of Birth:{2}\nBalance:{3}\nNo of Transaction:{4}\nAddress:{5}",
+                this.accountNumber, this.accountName, this.dateOfBirth, this.balance, this.transaction, this.address.GetAddress());
         }
     }
 }
