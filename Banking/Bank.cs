@@ -61,13 +61,39 @@ namespace Banking
             if(flag == 1) { Console.WriteLine("Account Not Found"); }
         }
 
-        public void Transaction(int transactionType, double amount, params int[] accountNumber ) {
+        public Account GetUser(int accountNo, string password) {
+            int flag = 0;
+            for (int i = 0; i < myBank.Length; i++)
+            {
+                if (myBank[i] == null)
+                {
+                    continue;
+                }
+                else if (myBank[i].AccountNumber == accountNo && myBank[i].Password == password)
+                {
+                    flag = 0;
+                    return myBank[i];
+                }
+                else
+                {
+                    flag = 1;
+
+                }
+            }
+            if (flag == 1)
+            {
+                Console.WriteLine("incorect Password");
+            }
+            return null;
+        }
+
+        public void Transaction(int transactionType, double amount,Account account, params int[] accountNumber ) {
             if (transactionType == 1) 
-                { myBank[(accountNumber[0] - 1)].Diposit(amount); }
+                { account.Diposit(amount); }
             else if (transactionType == 2) 
-                { myBank[(accountNumber[0] - 1)].Withdraw(amount); }
+                { account.Withdraw(amount); }
             else if (transactionType == 3)
-                { myBank[(accountNumber[0] - 1)].Transfer(myBank[(accountNumber[1] - 1)], amount); }
+                { account.Transfer(myBank[(accountNumber[0] - 1)], amount); }
         }
 
         public void PrintAccountDetails()

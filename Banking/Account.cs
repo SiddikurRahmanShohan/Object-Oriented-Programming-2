@@ -12,19 +12,8 @@ namespace Banking
         protected string accountName;
         protected string dateOfBirth;
         protected double balance;
+        protected string password;
         protected Address address;
-        //private static int count = 1000;
-
-        public Account()
-        {
-        }
-        public Account(string accountName, string dateOfBirth, double balance, Address address)
-        {
-            this.accountName = accountName;
-            this.dateOfBirth = dateOfBirth;
-            this.balance = balance;
-            this.address = address;
-        }
 
         public int AccountNumber
         {
@@ -46,6 +35,12 @@ namespace Banking
         {
             get { return this.balance; }
             set { this.balance = value; }
+        }
+
+        public string Password
+        {
+            get { return this.password; }
+            set { this.password = value; }
         }
         public Address Address
         {

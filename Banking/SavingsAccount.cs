@@ -9,42 +9,19 @@ namespace Banking
     class SavingsAccount: Account
     {
         private int transaction = 0;
-        public SavingsAccount(string accountName, string dateOfBirth, double balance, Address address):
-            base(accountName, dateOfBirth, balance, address)
+        public SavingsAccount(string accountName, string dateOfBirth, double balance, string password, Address address)
         {
+            this.accountName = accountName;
+            this.dateOfBirth = dateOfBirth;
+            this.balance = balance;
+            this.password = password;
+            this.address = address;
         }
         public int Transaction
         {
             get { return this.transaction; }
             set { this.transaction = value; }
         }
-        /*public int AccountNumber
-         {
-             get { return this.accountNumber; }
-             set { this.accountNumber = value; }
-         }
-         override public string AccountName
-         {
-             get { return this.accountName; }
-             set { this.accountName = value; }
-         }
-
-         override public string DateOfBirth
-         {
-             get { return this.dateOfBirth; }
-             set { this.dateOfBirth = value; }
-         }
-         override public double Balance
-         {
-             get { return this.balance; }
-             set { this.balance = value; }
-         }
-
-         override public Address Address
-         {
-             get { return this.address; }
-             set { this.address = value; }
-         }*/
 
         override public void Diposit(double amount)
         {
@@ -53,7 +30,8 @@ namespace Banking
             int newTransaction = this.transaction + 1;
             this.transaction = newTransaction;
             Console.WriteLine("\n-----------Diposit Successful-----------");
-            Console.WriteLine("\nNew Balance: " + this.balance);
+            Console.WriteLine("\nTransaction no.: " + this.transaction);
+            Console.WriteLine("New Balance: " + this.balance);
         }
 
         override public void Withdraw(double amount)
@@ -66,7 +44,7 @@ namespace Banking
                 this.transaction = newTransaction;
                 Console.WriteLine("\n-----------Withdrawal Successful-----------");
                 Console.WriteLine("\nTransaction no.: " + this.transaction);
-                Console.WriteLine("\nNew Balance: " + this.balance);
+                Console.WriteLine("New Balance: " + this.balance);
             }
             else {
                 Console.WriteLine("\nYou Can not Withdraw an Amount of " + amount);
@@ -78,11 +56,11 @@ namespace Banking
         {
             if (this.balance > amount)
             {
-                reciver.Diposit(amount);
                 this.Withdraw(amount);
+                reciver.Diposit(amount);
                 Console.WriteLine("\n-----------Transfer Successful-----------");
                 Console.WriteLine("\nTransaction no.: " + this.transaction);
-                Console.WriteLine("\nNew Balance: " + this.balance);
+                Console.WriteLine("New Balance: " + this.balance);
             }
             else
             {
