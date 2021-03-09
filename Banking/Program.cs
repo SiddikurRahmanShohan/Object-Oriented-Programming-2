@@ -142,6 +142,7 @@ namespace Banking
                     return true;
                 case "account":
                     Console.Clear();
+                    Console.WriteLine("********************Login*************");
                     Console.Write("\nAccount No. ");
                     int accountNo = Convert.ToInt32(Console.ReadLine());
                     Console.Write("\nPassword: ");
@@ -150,6 +151,7 @@ namespace Banking
                     Account account = bank.GetUser(accountNo, password);
                     if (account != null)
                     {
+                        
                         while (showAccountMenu)
                         {
                             showAccountMenu = AccountMenu(bank, account);

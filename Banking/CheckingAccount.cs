@@ -25,18 +25,25 @@ namespace Banking
 
         override public void Diposit(double amount)
         {
-            double newBalance = this.balance + amount;
-            this.balance = newBalance;
-            int newTransaction = this.transaction + 1;
-            this.transaction = newTransaction;
-            Console.WriteLine("\n-----------Diposit Successful-----------");
-            Console.WriteLine("\nTransaction no.: " + this.transaction);
-            Console.WriteLine("New Balance: " + this.balance);
+            if (amount > 0)
+            {
+                double newBalance = this.balance + amount;
+                this.balance = newBalance;
+                int newTransaction = this.transaction + 1;
+                this.transaction = newTransaction;
+                Console.WriteLine("\n-----------Diposit Successful-----------");
+                Console.WriteLine("\nTransaction no.: " + this.transaction);
+                Console.WriteLine("New Balance: " + this.balance);
+            }
+            else {
+                Console.WriteLine("\nYou can not diposit negative amount");
+            }
+            
         }
 
         override public void Withdraw(double amount)
         {
-            if (amount <= this.balance && this.balance > 0.0)
+            if (amount <= this.balance && this.balance > 0.0 && amount > 0)
             {
                 double newBalance = this.balance - amount;
                 this.balance = newBalance;
